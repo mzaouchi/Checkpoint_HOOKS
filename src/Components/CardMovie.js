@@ -1,6 +1,8 @@
 import {Card,Button} from 'react-bootstrap'
 import Rating from '@mui/material/Rating';
-const CardMovie=({el})=>{
+import EditMovie from './EditMovie';
+const CardMovie=({el,movies,setMovies})=>{
+  const handleDelete=(a)=> setMovies(movies.filter(el => el.id != a))
     return(
         <div  className='rami'>
         <Card style={{ width: '18rem' }}>
@@ -14,7 +16,8 @@ const CardMovie=({el})=>{
           <Rating name="read-only" value={el.rating} readOnly />
             {/* {el.rating} */}
           </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+          <EditMovie el={el} movies={movies} setMovies={setMovies}/>
+          <Button onClick={()=>handleDelete(el.id)} variant="primary">Delete</Button>
         </Card.Body>
       </Card>
       </div>
