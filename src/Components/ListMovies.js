@@ -1,10 +1,14 @@
 import CardMovie from "./CardMovie"
 
-const ListMovies=({movies,setMovies})=>{
+const ListMovies=({movies,setMovies,textP,brahimP})=>{
+    var x = movies.filter(el=> el.title.toUpperCase().includes(textP.toUpperCase()) && el.rating >= brahimP)
     return(
         <div className="brahim">
             {
-                movies.map(el => <CardMovie el={el} movies={movies} setMovies={setMovies}/>)
+                
+                x.length == 0 ? <h1>Mouch mawjoud</h1> : x.map(el => <CardMovie el={el} movies={movies} setMovies={setMovies}/>)
+                
+                // .map(el => <CardMovie el={el} movies={movies} setMovies={setMovies}/>)
             }
         </div>
     )
